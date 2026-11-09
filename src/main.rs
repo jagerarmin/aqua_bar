@@ -1,4 +1,5 @@
 mod battery;
+mod time;
 
 fn main() {
     let cap = battery::read_capacity().unwrap();
@@ -9,4 +10,8 @@ fn main() {
         cap,
         if charging { "Yes" } else { "No" }
     );
+
+    let user_format = "%Y:%H:%M";
+    let clock = time::get_time(user_format);
+    println!("Time {}", clock);
 }
